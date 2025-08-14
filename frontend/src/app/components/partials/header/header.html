@@ -1,0 +1,27 @@
+<header>
+    <div class="container">
+       <a href="/" class ="logo"> Food Mine !</a>
+       <nav>
+        <ul>
+            <li>
+                <a href="/login">Login</a>
+            </li>
+            <li class="menu-container">
+            <a href="/dashboard">Takwa</a>
+            <div class="menu">
+                <a href="/profile"> Profile</a>
+                <a href="/orders">Orders</a>
+                <a >Logout</a>
+            </div>
+
+            </li>
+            <li>
+                <a routerLink="/cart-page">
+                    Cart <span *ngIf="cartQuantity">{{cartQuantity}}</span>
+                </a>
+            </li>
+
+        </ul>
+       </nav>
+    </div>
+</header>
