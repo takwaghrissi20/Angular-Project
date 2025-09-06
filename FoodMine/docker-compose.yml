@@ -1,18 +1,20 @@
 version: '3'
 
 services:
-  angular:
-    hostname: localhost
-    build: frontend
+  backend:
+    build : ./backend
+    container_name: my-backend
     ports:
-      - 4200:4200
-  express:
-    build: backend
+     - "5000:5000"
+    env_file:
+      - ./backend/src/.env
+
+  frontend:
+    build: ./frontend
+    container_name: my-frontend
     ports:
-      - '3000:3000'
-    links:
-      - 'database'
-  database:
-    image: 'mongo'
-    ports:
-      - '27017:27017'  
+     - "4200:4200"
+    environment:
+      - API_URL=http://backend:5000
+    depends_on:
+      - backend

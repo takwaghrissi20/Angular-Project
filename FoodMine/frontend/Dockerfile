@@ -12,18 +12,34 @@ RUN npm install --force
 COPY  . .
 
 #Build de l'application Angular
-RUN npm run build:prod
+EXPOSE 4200
 
-CMD ["npm", "start"]
+CMD ["npx", "ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
 
 
-# Etape 2: Nginx pour servir l'application 
-#FROM nginx:alpine
 
-#copier les fichiers buildés vers nginx
-#COPY --from=node  /usr/src/app/dist/frontend /usr/share/nginx/html
-#COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-#exposer le port 80
-#EXPOSE 80
-#CMD ["nginx" ,"-g","daemon off;"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

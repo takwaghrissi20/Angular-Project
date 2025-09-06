@@ -1,8 +1,14 @@
-FROM node:22
-RUN mkdir -p /usr/src/app
+FROM  node:22.18.0-alpine as node
+
 WORKDIR /usr/src/app
-COPY package.json /usr/src/app
+
+COPY package*.json ./
+
 RUN npm install --force
-COPY . /usr/src/app
-EXPOSE 3000
-CMD ["npm","start"]
+
+COPY . .
+
+EXPOSE 5000
+
+CMD ["npx", "ts-node", "src/server.ts"] 
+#to run ts directly
