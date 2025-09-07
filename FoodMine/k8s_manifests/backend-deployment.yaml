@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: backend
+  namespace: workshop
+  labels:
+    app: backend
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+  spec:
+    containers:
+      - name: my-backend
+        image: takwaghrissi28399/my-backend:latest
+        imagePullPolicy: Always
+        env:
+          - name: MONGO_URI
+            valueFrom:
+              secretKeyRef:
+                name: backend-secret
+                key: MONGO_URI
+          - name: JWT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: backend-secret
+                key: JWT_SECRET
+        ports:
+          - containerPort: 5000

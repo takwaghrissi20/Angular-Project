@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: frontend
+  namespace: workshop
+  lables:
+    app: frontend
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+  spec:
+    containers:
+      - name: my-frontend
+        image: takwaghrissi28399/my-frontend:latest
+        imagePullPolicy: Always
+        env:
+          - name: API_URL
+            value: "http://backend:5000"
+        ports:
+          - containerPort: 4200
