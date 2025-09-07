@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: frontend
   namespace: workshop
-  lables:
+  labels:   
     app: frontend
 
 spec:
@@ -16,13 +16,13 @@ spec:
     metadata:
       labels:
         app: frontend
-  spec:
-    containers:
-      - name: my-frontend
-        image: takwaghrissi28399/my-frontend:latest
-        imagePullPolicy: Always
-        env:
-          - name: API_URL
-            value: "http://backend:5000"
-        ports:
-          - containerPort: 4200
+    spec:    
+      containers:
+        - name: my-frontend
+          image: takwaghrissi28399/my-frontend:latest
+          imagePullPolicy: Always
+          env:
+            - name: API_URL
+              value: "http://backend:5000"
+          ports:
+            - containerPort: 4200
