@@ -16,7 +16,7 @@ app.use(express.json()); // to parse JSON bodies
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:4200",
+    origin: "*",
   })
 );
 
